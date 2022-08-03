@@ -22,6 +22,7 @@ class _FoodPageBodyState extends State<FoodPageBody> {
 
   @override
   void initState() {
+    print('Screen height is: ${Dimensions.screenHeight}');
     // TODO: implement initState
     super.initState();
     pageController.addListener(() {
@@ -63,6 +64,107 @@ class _FoodPageBodyState extends State<FoodPageBody> {
                 borderRadius: BorderRadius.circular(5.0)),
           ),
         ),
+        SizedBox(height: Dimensions.height30),
+        Container(
+          margin: EdgeInsets.only(left: Dimensions.width30),
+          child: Row(
+            crossAxisAlignment: CrossAxisAlignment.end,
+            children: [
+              BigText(text: "Popular"),
+              SizedBox(width: Dimensions.width10),
+              Container(
+                margin: EdgeInsets.only(bottom: 3),
+                child: BigText(
+                  text: ".",
+                  color: AppColors.textColor,
+                ),
+              ),
+              SizedBox(width: Dimensions.width10),
+              Container(
+                margin: EdgeInsets.only(bottom: 2),
+                child: SmallText(text: "Food pairing"),
+              ),
+            ],
+          ),
+        ),
+        ListView.builder(
+            physics: NeverScrollableScrollPhysics(),
+            shrinkWrap: true,
+            itemCount: 10,
+            itemBuilder: (context, index) {
+              return Container(
+                margin: EdgeInsets.only(
+                  left: Dimensions.width20,
+                  right: Dimensions.width20,
+                  bottom: Dimensions.height10,
+                ),
+                child: Row(
+                  children: [
+                    Container(
+                      height: Dimensions.listViewImgSize,
+                      width: Dimensions.listViewImgSize,
+                      decoration: BoxDecoration(
+                        borderRadius:
+                            BorderRadius.circular(Dimensions.radius20),
+                        image: DecorationImage(
+                          fit: BoxFit.cover,
+                          image: AssetImage("assets/images/food4.png"),
+                        ),
+                      ),
+                    ),
+                    Expanded(
+                      child: Container(
+                        height: Dimensions.listViewSize,
+                        decoration: BoxDecoration(
+                          color: Colors.white,
+                          borderRadius: BorderRadius.only(
+                            topRight: Radius.circular(Dimensions.radius20),
+                            bottomRight: Radius.circular(Dimensions.radius20),
+                          ),
+                        ),
+                        child: Padding(
+                          padding: EdgeInsets.only(
+                            top: Dimensions.height10,
+                            left: Dimensions.height10,
+                          ),
+                          child: Column(
+                            mainAxisAlignment: MainAxisAlignment.center,
+                            crossAxisAlignment: CrossAxisAlignment.start,
+                            children: [
+                              BigText(text: "Nutritious fruit meal in China"),
+                              SizedBox(height: Dimensions.height10),
+                              SmallText(text: "With chinese characteristics"),
+                              SizedBox(height: Dimensions.height10),
+                              Row(
+                                mainAxisAlignment:
+                                    MainAxisAlignment.spaceAround,
+                                children: [
+                                  IconText(
+                                    text: "Normal",
+                                    icon: Icons.circle_sharp,
+                                    iconColor: AppColors.yellowColor,
+                                  ),
+                                  IconText(
+                                    text: "1.7km",
+                                    icon: Icons.pin_drop,
+                                    iconColor: AppColors.mainColor,
+                                  ),
+                                  IconText(
+                                    text: "32 min",
+                                    icon: Icons.lock_clock,
+                                    iconColor: Colors.red,
+                                  ),
+                                ],
+                              )
+                            ],
+                          ),
+                        ),
+                      ),
+                    )
+                  ],
+                ),
+              );
+            }),
       ],
     );
   }
