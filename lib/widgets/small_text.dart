@@ -1,9 +1,10 @@
 import 'package:flutter/material.dart';
+import 'package:my_app/utils/dimensions.dart';
 
 class SmallText extends StatelessWidget {
   Color? color;
   final String text;
-  double size;
+  double? size;
   double height;
   TextOverflow overflow;
 
@@ -11,7 +12,7 @@ class SmallText extends StatelessWidget {
     Key? key,
     this.color = const Color(0xFFCCC7C5),
     required this.text,
-    this.size = 12,
+    this.size,
     this.height = 1.2,
     this.overflow = TextOverflow.ellipsis,
   }) : super(key: key);
@@ -25,7 +26,7 @@ class SmallText extends StatelessWidget {
         color: color,
         fontFamily: 'Roboto',
         fontWeight: FontWeight.w400,
-        fontSize: size,
+        fontSize: size ?? Dimensions.font12,
         height: height,
       ),
     );
